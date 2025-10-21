@@ -3,6 +3,7 @@ import pygame
 from random import randint
 from util_params import *
 from util_background import make_background
+from fish import Fish
 
 # pygame setup
 pygame.init()
@@ -16,12 +17,13 @@ background = make_background()
 
 
 ############### TESTING ZONE #######################
-
-
-
+# make 20 fish
+fish_list = []
+for i in range(20):
+    # make a new fish and append
+    fish_list.append(Fish(randint(0,WIDTH), randint(0,HEIGHT)))
 
 ####################################################
-
 
 while running:
     # poll for events
@@ -30,12 +32,19 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    # update all of our things
+    for f in fish_list:
+        f.update()
+
     # draw background
     screen.blit(background,(0,0))
 
     # RENDER YOUR GAME HERE
+    # draw every fish in fish list
+    for f in fish_list:
+        f.draw(screen)
 
-    
+
     # flip() the display to put your work on screen
     pygame.display.flip()
 
