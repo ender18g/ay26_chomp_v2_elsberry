@@ -1,6 +1,6 @@
 ## AY26 CHOMP FISH GAME
 
-[doccs link](https://ender18g.github.io/ay26_chomp_v2_elsberry/#/)
+[Docsify Documentation Page](https://ender18g.github.io/ay26_chomp_v2_elsberry/#/)
 
 ### Screenshot of current game:
 ![screenshot](docs/background_screenshot.png)
