@@ -22,7 +22,7 @@ water_tile = pygame.image.load(water_tile_location)
 sand_top_a_location = 'assets/images/terrain_sand_top_a.png'
 sand_top_a = pygame.image.load(sand_top_a_location)
 
-seaweed_a_location = 'assets\images\seaweed_green_a_outline.png'
+seaweed_a_location = 'assets/images/seaweed_green_a_outline.png'
 seaweed_tile = pygame.image.load(seaweed_a_location)
 
 # get the tile width, height
@@ -51,12 +51,6 @@ for i in range(num_seaweed):
     # blit that seaweed
     background.blit(seaweed_tile,(x,y))
     
-
-
-
-
-
-
 # blit the background to our screen
 screen.blit(background,(0,0))
 
