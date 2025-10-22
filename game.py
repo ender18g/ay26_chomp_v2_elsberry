@@ -46,10 +46,10 @@ while running:
     # kill fish that pass the line
     for f in fish_group:
         # see if it passed line
-        if f.rect.left<=fishnet_x_pos:
-            f.kill()
+        if f.rect.left<=fishnet_x_pos and f.state != 'explosion':
+            f.make_skeleton()
             # a fish just died, we need a new one!
-            fish_group.add(Fish(randint(WIDTH//2+50,WIDTH), randint(0,HEIGHT)))
+            #fish_group.add(Fish(randint(WIDTH//2+50,WIDTH), randint(0,HEIGHT)))
 
     # draw background
     screen.blit(background,(0,0))
