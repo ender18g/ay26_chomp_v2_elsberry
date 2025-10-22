@@ -2,8 +2,9 @@ from util_params import *
 import pygame
 from random import choice
 
-class Fish():
+class Fish(pygame.sprite.Sprite):
     def __init__(self,x=WIDTH//2,y=HEIGHT//2):
+        pygame.sprite.Sprite.__init__(self)
         self.assets = [
             'assets/images/fish_orange.png',
             'assets/images/fish_pink.png',

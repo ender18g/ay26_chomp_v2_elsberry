@@ -18,10 +18,18 @@ background = make_background()
 
 ############### TESTING ZONE #######################
 # make 20 fish
-fish_list = []
+fish_group = pygame.sprite.Group()
 for i in range(20):
-    # make a new fish and append
-    fish_list.append(Fish(randint(0,WIDTH), randint(0,HEIGHT)))
+    # make a new fish and add to sprite group
+    fish_group.add(Fish(randint(0,WIDTH), randint(0,HEIGHT)))
+
+fishnet_surface = pygame.Surface((20,HEIGHT))
+fishnet_surface.fill('brown')
+fishnet_x_pos = WIDTH//2
+# put fishnet on bg
+background.blit(fishnet_surface, (fishnet_x_pos,0))
+
+
 
 ####################################################
 
@@ -33,16 +41,22 @@ while running:
             running = False
 
     # update all of our things
-    for f in fish_list:
-        f.update()
+    fish_group.update()
+
+    # kill fish that pass the line
+    for f in fish_group:
+        # see if it passed line
+        if f.rect.left<=fishnet_x_pos:
+            f.kill()
+            # a fish just died, we need a new one!
+            fish_group.add(Fish(randint(WIDTH//2+50,WIDTH), randint(0,HEIGHT)))
 
     # draw background
     screen.blit(background,(0,0))
 
     # RENDER YOUR GAME HERE
     # draw every fish in fish list
-    for f in fish_list:
-        f.draw(screen)
+    fish_group.draw(screen)
 
 
     # flip() the display to put your work on screen
