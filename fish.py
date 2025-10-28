@@ -31,7 +31,9 @@ class Fish(pygame.sprite.Sprite):
         self.y += self.vy
         # update the rect
         self.rect.center = (self.x, self.y)
-
+        # move fish to the right side if it passes x axis
+        if self.rect.right < 0:
+            self.x = WIDTH + 200 # go 200 px beyond the screen
 
     
     def draw(self, screen):

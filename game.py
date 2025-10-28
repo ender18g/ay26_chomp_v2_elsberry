@@ -23,8 +23,6 @@ for i in range(20):
     # make a new fish and add to sprite group
     fish_group.add(Fish(randint(0,WIDTH), randint(0,HEIGHT)))
 
-
-
 ####################################################
 
 while running:
@@ -43,7 +41,6 @@ while running:
     # RENDER YOUR GAME HERE
     # draw every fish in fish list
     fish_group.draw(screen)
-
 
     # flip() the display to put your work on screen
     pygame.display.flip()
