@@ -18,14 +18,16 @@ background = make_background()
 
 
 ############### TESTING ZONE #######################
-# make a player
-player = Player()
 
 # make 20 fish
 fish_group = pygame.sprite.Group()
+
 for i in range(20):
     # make a new fish and add to sprite group
     fish_group.add(Fish(randint(0,WIDTH), randint(0,HEIGHT)))
+
+# make a player
+player = Player(fish_group)
 
 ####################################################
 
