@@ -23,12 +23,6 @@ for i in range(20):
     # make a new fish and add to sprite group
     fish_group.add(Fish(randint(0,WIDTH), randint(0,HEIGHT)))
 
-fishnet_surface = pygame.Surface((20,HEIGHT))
-fishnet_surface.fill('brown')
-fishnet_x_pos = WIDTH//2
-# put fishnet on bg
-background.blit(fishnet_surface, (fishnet_x_pos,0))
-
 
 
 ####################################################
@@ -42,14 +36,6 @@ while running:
 
     # update all of our things
     fish_group.update()
-
-    # kill fish that pass the line
-    for f in fish_group:
-        # see if it passed line
-        if f.rect.left<=fishnet_x_pos and f.state != 'explosion':
-            f.make_skeleton()
-            # a fish just died, we need a new one!
-            #fish_group.add(Fish(randint(WIDTH//2+50,WIDTH), randint(0,HEIGHT)))
 
     # draw background
     screen.blit(background,(0,0))
