@@ -5,6 +5,7 @@ from util_params import *
 from util_background import make_background
 from fish import Fish
 from player import Player
+from chomp_text import Chomp_Text
 
 # pygame setup
 pygame.init()
@@ -16,9 +17,6 @@ running = True
 # make background
 background = make_background()
 
-
-############### TESTING ZONE #######################
-
 # make 20 fish
 fish_group = pygame.sprite.Group()
 
@@ -28,6 +26,9 @@ for i in range(20):
 
 # make a player
 player = Player(fish_group)
+
+############### TESTING ZONE #######################
+title = Chomp_Text()
 
 ####################################################
 
@@ -47,10 +48,17 @@ while running:
     # draw background
     screen.blit(background,(0,0))
 
+
+    # draw our title
+    title.update()
+    title.draw(screen)
+
+
     # RENDER YOUR GAME HERE
     # draw every fish in fish list
     fish_group.draw(screen)
     player.draw(screen)
+
 
     # flip() the display to put your work on screen
     pygame.display.flip()
