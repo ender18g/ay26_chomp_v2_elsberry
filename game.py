@@ -51,6 +51,7 @@ while running:
 
     # draw our title
     title.update()
+    title.update_score(player.score)
     title.draw(screen)
 
 

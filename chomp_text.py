@@ -14,6 +14,14 @@ class Chomp_Text():
         self.birth_time = pygame.time.get_ticks()
         self.death_time = 2000
 
+        # make a score font / surface
+        self.score_font = pygame.font.Font('assets/fonts/SuperAdorable-MAvyp.ttf', 40)
+        self.black = (0,0,0)
+        self.score_surface = self.score_font.render('0',1,self.black)
+
+    def update_score(self, score):
+        self.score_surface = self.score_font.render(f"{score}",1,self.black)
+
     def update(self):
         # adjust the alpha based on the age of our text
         current_age = pygame.time.get_ticks() - self.birth_time
@@ -24,3 +32,4 @@ class Chomp_Text():
 
     def draw(self, screen):
         screen.blit(self.title_surface, self.title_rect)
+        screen.blit(self.score_surface, (20,20))
