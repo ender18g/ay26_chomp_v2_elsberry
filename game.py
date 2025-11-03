@@ -6,6 +6,7 @@ from util_background import make_background
 from fish import Fish
 from player import Player
 from chomp_text import Chomp_Text
+from blowfish import BlowFish
 
 # pygame setup
 pygame.init()
@@ -19,6 +20,7 @@ background = make_background()
 
 # make 20 fish
 fish_group = pygame.sprite.Group()
+enemy_group = pygame.sprite.Group()
 
 for i in range(20):
     # make a new fish and add to sprite group
@@ -27,8 +29,16 @@ for i in range(20):
 # make a player
 player = Player(fish_group)
 
-############### TESTING ZONE #######################
+# make some blowfish
+num_enemies = 3
+for i in range(num_enemies):
+    enemy_group.add(BlowFish())
+
+
+# make our title / text instance
 title = Chomp_Text()
+
+############### TESTING ZONE #######################
 
 ####################################################
 
@@ -44,6 +54,7 @@ while running:
     # update all of our things
     fish_group.update()
     player.update()
+    enemy_group.update()
 
     # draw background
     screen.blit(background,(0,0))
@@ -58,6 +69,7 @@ while running:
     # RENDER YOUR GAME HERE
     # draw every fish in fish list
     fish_group.draw(screen)
+    enemy_group.draw(screen)
     player.draw(screen)
 
 
