@@ -3,7 +3,7 @@ from util_params import *
 from random import randint
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self,fish_group, x=WIDTH*0.1, y=HEIGHT/2):
+    def __init__(self,fish_group, x=100, y=HEIGHT/2):
         pygame.sprite.Sprite.__init__(self) # init the sprite class
         self.x = x
         self.y = y
@@ -46,6 +46,14 @@ class Player(pygame.sprite.Sprite):
             if event.key == pygame.K_s:
                 # player goes down
                 self.vy  += 2
+            # move left and right
+            if event.key == pygame.K_a:
+                # player goes back
+                self.vx += -2
+            if event.key == pygame.K_d:
+                # player goes forward
+                self.vx += 2
+
     
     def draw(self, screen):
         screen.blit(self.image, self.rect)

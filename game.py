@@ -6,7 +6,7 @@ from util_background import make_background
 from fish import Fish
 from player import Player
 from chomp_text import Chomp_Text
-from blowfish import BlowFish
+from enemyfish import EnemyFish
 
 # pygame setup
 pygame.init()
@@ -32,7 +32,7 @@ player = Player(fish_group)
 # make some blowfish
 num_enemies = 3
 for i in range(num_enemies):
-    enemy_group.add(BlowFish())
+    enemy_group.add(EnemyFish(player))
 
 
 # make our title / text instance
