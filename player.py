@@ -3,11 +3,12 @@ from util_params import *
 from random import randint
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self,fish_group, x=100, y=HEIGHT/2):
+    def __init__(self, fish_group, enemy_group, x=100, y=HEIGHT/2):
         pygame.sprite.Sprite.__init__(self) # init the sprite class
         self.x = x
         self.y = y
         self.fish_group = fish_group
+        self.enemy_group = enemy_group
         self.vx = 0
         self.vy = 0
         self.image = pygame.image.load('assets/images/fish_red_outline.png')
@@ -22,7 +23,7 @@ class Player(pygame.sprite.Sprite):
         # update the rect
         self.rect.center = (self.x, self.y)
 
-        # check for collision
+        # check for good collision
         colliding_fish = pygame.sprite.spritecollide(self,self.fish_group,0)
         # check and see if a collision occured
         if colliding_fish:
@@ -32,6 +33,19 @@ class Player(pygame.sprite.Sprite):
             for f in colliding_fish:
                 f.x = WIDTH+100
                 f.y = randint(0,HEIGHT)
+        
+        # check for a bad collision
+        colliding_bad_fish = pygame.sprite.spritecollide(self, self.enemy_group,0)
+        # check for a collision
+        if colliding_bad_fish:
+            print("COLLIDED WITH ENEMY")
+            self.score -= 50
+            # move the collided to right of screen
+            for f in colliding_bad_fish:
+                f.x = WIDTH + 100
+                f.y = randint(0,HEIGHT)
+
+
 
     
     def check_event(self, event):

@@ -27,7 +27,7 @@ for i in range(20):
     fish_group.add(Fish(randint(0,WIDTH), randint(0,HEIGHT)))
 
 # make a player
-player = Player(fish_group)
+player = Player(fish_group, enemy_group)
 
 # make some blowfish
 num_enemies = 3
