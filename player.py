@@ -16,6 +16,8 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.rotozoom(self.image, 0, 1.2)
         self.rect = self.image.get_rect()
         self.score = 0
+        self.score_sound = pygame.mixer.Sound('assets/Audio/impactMetal_heavy_001.ogg')
+        self.hit_sound = pygame.mixer.Sound('assets/Audio/impactPlate_medium_002.ogg')
 
     def update(self):
         self.x += self.vx
@@ -27,6 +29,8 @@ class Player(pygame.sprite.Sprite):
         colliding_fish = pygame.sprite.spritecollide(self,self.fish_group,0)
         # check and see if a collision occured
         if colliding_fish:
+            # play sound
+            self.score_sound.play()
             self.score +=10
             print(self.score)
             # move the collided fish to the right of the screen
@@ -38,7 +42,7 @@ class Player(pygame.sprite.Sprite):
         colliding_bad_fish = pygame.sprite.spritecollide(self, self.enemy_group,0)
         # check for a collision
         if colliding_bad_fish:
-            print("COLLIDED WITH ENEMY")
+            self.hit_sound.play()
             self.score -= 50
             # move the collided to right of screen
             for f in colliding_bad_fish:
