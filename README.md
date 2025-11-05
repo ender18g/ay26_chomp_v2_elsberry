@@ -6,7 +6,7 @@
 ![screenshot](docs/background_screenshot.png)
 
 - [x] make a background (tiled)
-- [ ] make a player
-- [ ] make some fish
+- [x] make a player
+- [x] make some fish
 
 
