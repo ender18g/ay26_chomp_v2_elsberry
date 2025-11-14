@@ -18,3 +18,8 @@
 - [x] make some fish
 
 
+## Directions
+1. Run the game by typing `python game.py`
+2. Use the `w` key to move up
+3. use the `s` key to move left
+
